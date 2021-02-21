@@ -35,4 +35,4 @@
 
 var otherReceive = require('./other')
 
-console.warn(otherReceive())
+console.warn(otherReceive(10,30))
