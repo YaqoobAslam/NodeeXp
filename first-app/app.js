@@ -1,9 +1,15 @@
-const express = require('express')
 
+const express = require('express')
 const app = express()
 
 app.get('/',function(req, res){
+  res.send('This is Home Page')
+})
+app.get('/about', function(req,res){
+  res.send('This is About Page')
+})
+app.get('/login', function(req,res){
+  res.send('This is Login Page')
+})
 
-  res.send("Hello Express")
-  
-}).listen(4500)
+app.listen(4000)
