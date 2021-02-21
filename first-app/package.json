@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express": "^4.17.1",
     "nodemailer": "^6.4.18",
     "nodemon": "^2.0.7",
     "upper-case": "^2.0.2"
