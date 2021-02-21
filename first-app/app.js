@@ -8,13 +8,25 @@
 // ------------------------------------------------
 
 //Created Anonymous function
-var add = function(a,b){
-  return a + b;
-}
+// var add = function(a,b){
+//   return a + b;
+// }
 
-function callBack(add){
-  console.warn(300,300)
-}
+// function callBack(add){
+//   console.warn(300,300)
+// }
 
 // Passes add function as callback
-callBack(add)
+// callBack(add)
+
+//---------------------------------------------------
+
+// Other way of callback
+
+function callBack(add){
+  console.warn(add(300,400))
+}
+
+callBack(function(a, b){
+  return a + b;
+})
