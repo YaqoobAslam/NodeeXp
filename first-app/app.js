@@ -54,21 +54,35 @@
 // }).listen(3000)
 
 //-------------------------------------------------------------
+// var http = require('http')
+
+// var page = `
+//   <h1> Node.js App</h1>
+//   <input type="text" /> <br><br>
+//   <input type="text" /> <br><br>
+//   <input type="text" /> <br><br>
+
+// `
+
+// http.createServer(function(req, res){
+
+//   res.writeHead(200, {'Content-Type': 'text/html'})
+
+//   res.write(page)
+//   res.end()
+
+// }).listen(4000)
+
+//--------------------------------------------------------------
 var http = require('http')
 
-var page = `
-  <h1> Node.js App</h1>
-  <input type="text" /> <br><br>
-  <input type="text" /> <br><br>
-  <input type="text" /> <br><br>
+var uc = require('upper-case')
 
-`
+http.createServer(function(req,res) {
 
-http.createServer(function(req, res){
-
-  res.writeHead(200, {'Content-Type': 'text/html'})
-
-  res.write(page)
+  res.write(uc.upperCase('Hello from Web Page.'))
   res.end()
 
-}).listen(4000)
+}).listen(2000)
+
+
