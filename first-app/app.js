@@ -1,6 +1,15 @@
 var http = require('http')
-http.createServer(function(req,res){
-  res.write('Hello nodemon tested')
-  res.end()
-}).listen(3000)
+
+var fs = require('fs')
+http.createServer(function(req, res){
+
+  fs.readFile('index.html', function(err, data){
+
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.write(data)
+    res.end();
+
+  })  
+  
+}).listen(4000)
 
