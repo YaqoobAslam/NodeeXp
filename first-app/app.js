@@ -33,6 +33,19 @@
 
 //----------------------------------------------------
 
-var otherReceive = require('./other')
+// Creted module other and receive here 
+// var otherReceive = require('./other')
 
-console.warn(otherReceive(10,30))
+// console.warn(otherReceive(10,30))
+
+//-----------------------------------------------------
+
+var http = require('http')
+http.createServer(function(req, res){
+
+  res.writeHead(200, {'Content-Type': 'application\json'})
+  
+  res.write('{"name": "Yaqoob"}')
+  res.end()
+}).listen(3000)
+
