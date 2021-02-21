@@ -4,7 +4,6 @@
 //   res.end()
 // }).listen(5000)
 
-
 // ------------------------------------------------
 
 //Created Anonymous function
@@ -33,7 +32,7 @@
 
 //----------------------------------------------------
 
-// Creted module other and receive here 
+// Creted module other and receive here
 // var otherReceive = require('./other')
 
 // console.warn(otherReceive(10,30))
@@ -74,15 +73,48 @@
 // }).listen(4000)
 
 //--------------------------------------------------------------
-var http = require('http')
+// Capitalize text
 
-var uc = require('upper-case')
+// var http = require('http')
 
-http.createServer(function(req,res) {
+// var uc = require('upper-case')
 
-  res.write(uc.upperCase('Hello from Web Page.'))
-  res.end()
+// http.createServer(function(req,res) {
 
-}).listen(2000)
+//   res.write(uc.upperCase('Hello from Web Page.'))
+//   res.end()
 
+// }).listen(2000)
 
+//-----------------------------------------------------------------
+
+var nodeMailer = require("nodemailer");
+
+var transport = nodeMailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  requireTLS: true,
+  auth: {
+    user: "happyyaqoob@gmail.com",
+    pass: "Ahmad786@786$yokihahalols",
+  },
+
+  tls: {
+      rejectUnauthorized: false
+    }
+});
+
+var mailOptions = {
+  from: "reach.yaqoob@gamil.com",
+  to: "reach.yaqoob@gamil.com",
+  subject: "test node mail",
+  text: "Thanks for let me know about Node mailer.",
+};
+transport.sendMail(mailOptions, function (error, info) {
+  if (error) {
+    console.warn(error);
+  } else {
+    console.warn("Email has been sent" + info.response);
+  }
+});
