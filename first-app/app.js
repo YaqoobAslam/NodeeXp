@@ -40,16 +40,27 @@
 
 //-----------------------------------------------------
 
+// var http = require('http')
+// http.createServer(function(req, res){
+//   var data =[
+//      {name: "Yaqoob", age: "20", email: "happyyaqoob@gmail.com"},
+//      {name: "Ahmad", age: "10", email: "ahmad@gmail.com"},
+//      {name: "Hamza", age: "12", email: "hamza@gmail.com"}
+//   ]
+//   res.writeHead(200, {'Content-Type': 'application\json'})
+
+//   res.write(JSON.stringify(data))
+//   res.end()
+// }).listen(3000)
+
+//-------------------------------------------------------------
 var http = require('http')
+
 http.createServer(function(req, res){
-  var data =[
-     {name: "Yaqoob", age: "20", email: "happyyaqoob@gmail.com"},
-     {name: "Ahmad", age: "10", email: "ahmad@gmail.com"},
-     {name: "Hamza", age: "12", email: "hamza@gmail.com"}
-  ]
-  res.writeHead(200, {'Content-Type': 'application\json'})
 
-  res.write(JSON.stringify(data))
+  res.writeHead(200, {'Content-Type': 'text/html'})
+
+  res.write('<input type="text" />')
   res.end()
-}).listen(3000)
-
+  
+}).listen(4000)
