@@ -42,10 +42,10 @@
 
 var http = require('http')
 http.createServer(function(req, res){
-
+  var data = '{"name": "Yaqoob"}'
   res.writeHead(200, {'Content-Type': 'application\json'})
-  
-  res.write('{"name": "Yaqoob"}')
+
+  res.write(data)
   res.end()
 }).listen(3000)
 
