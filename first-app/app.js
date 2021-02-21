@@ -23,10 +23,16 @@
 
 // Other way of callback
 
-function callBack(add){
-  console.warn(add(300,400))
-}
+// function callBack(add){
+//   console.warn(add(300,400))
+// }
 
-callBack(function(a, b){
-  return a + b;
-})
+// callBack(function(a, b){
+//   return a + b;
+// })
+
+//----------------------------------------------------
+
+var otherReceive = require('./other')
+
+console.warn(otherReceive())
