@@ -1,15 +1,9 @@
-var http = require('http')
-
 var fs = require('fs')
-http.createServer(function(req, res){
 
-  fs.readFile('index.html', function(err, data){
+var rs = fs.createReadStream('./app.txt')
+rs.on('open',function(){
+  console.log("App.txt file is open");
+})
 
-    res.writeHead(200, {'Content-Type': 'text/html'})
-    res.write(data)
-    res.end();
 
-  })  
-  
-}).listen(4000)
 
