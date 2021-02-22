@@ -3,10 +3,7 @@ const app = express()
 const router = express.Router()
 
 
-const checkUrl = function(req,res,next) {
-  console.warn('Current URL:' + req.originalUrl);
-  next()
-}
+const checkUrl = require('./routemiddleware')
 // app.use(checkUrl)
 
 
