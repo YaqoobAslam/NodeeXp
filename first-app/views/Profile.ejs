@@ -3,9 +3,11 @@
     <title>Profile Page</title>
   </head>
   <body>
-      <h1>Profile Mr. <%=name %></h1>
+      <%- include('common/nav.ejs') %>
+      <h1>Welcome Mr. <%=name %></h1>
       <h3>Email: <%=data.email%></h3>
       <h3>Address: <%=data.address%></h3>
+      <h3>Skills</h3>
       <ul>
         <%data.skills.forEach(function(item){ %>
           <li><%=item%></li>

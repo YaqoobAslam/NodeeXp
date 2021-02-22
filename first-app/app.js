@@ -8,4 +8,11 @@ app.get("/profile/:name", function (req, res) {
   res.render("Profile", { name: req.params.name, data: data})
 });
 
+app.get("/login", function (req, res) {
+  res.render("Login")
+});
+
+app.get("/",function(req,res){
+  res.render("Home")
+})
 app.listen(4000);
