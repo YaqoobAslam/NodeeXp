@@ -1,21 +1,13 @@
 const express = require("express");
 const app = express();
-app.use('/assets',express.static('assets'))
+const mongoose = require('mongoose')
 
-app.set("view engine", "ejs");
-app.get("/profile/:name", function (req, res) {
+mongoose.connect('mongodb+srv://YaqoobAslam:Ahmad786@786$yokihahalols@cluster0.lx1pt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/Test', 
+{
+  useNewUrlParser:true,
+  useUnifiedTopology:true
+}
 
-  // console.warn(req.params.name)
-  data = {email: 'test@gmail.com',address: 'noida', skills:['node js', 'javascript', 'vue']}
-  res.render("Profile", { name: req.params.name, data: data})
-});
-
-app.get("/login", function (req, res) {
-  console.log(req.query)
-  res.render("Login")
-});
-
-app.get("/",function(req,res){
-  res.render("Home")
+).then(()=>{
+  console.warn("db connection done");
 })
-app.listen(4000);
