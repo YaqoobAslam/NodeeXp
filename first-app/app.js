@@ -11,6 +11,7 @@ app.get("/profile/:name", function (req, res) {
 });
 
 app.get("/login", function (req, res) {
+  console.log(req.query)
   res.render("Login")
 });
 
