@@ -1,0 +1,10 @@
+ body {
+    background-color: tomato;
+    color: white;
+  }
+  a{
+    color: whitesmoke;
+  }
+  .nav li {
+    display: inline-block;
+  }
