@@ -1,32 +1,21 @@
 const express = require("express");
 const app = express();
-app.use("/assets", express.static("assets"));
+const mongoose = require("mongoose");
 
-var bodyParser = require("body-parser");
-var encoder = bodyParser.urlencoded();
+const User = require("./models/users");
 
-app.set("view engine", "ejs");
-app.get("/profile/:name", function (req, res) {
-  // console.warn(req.params.name)
-  data = {
-    email: "test@gmail.com",
-    address: "noida",
-    skills: ["node js", "javascript", "vue"],
-  };
-  res.render("Profile", { name: req.params.name, data: data });
+mongoose.connect(
+  "mongodb+srv://YaqoobAslam:Ahmad786@786$yokihahalols@cluster0.lx1pt.mongodb.net/Test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
+app.get("/users", function (req, res) {
+  User.find().then((data) => {
+    res.status(201).json(data);
+  });
 });
 
-app.get("/login", function (req, res) {
-  console.log(req.query);
-  res.render("Login");
-});
-
-app.post("/login", encoder, function (req, res) {
-  console.warn(req.body);
-  res.render("Home");
-});
-
-app.get("/", function (req, res) {
-  res.render("Home");
-});
-app.listen(4000);
+app.listen(5000);
