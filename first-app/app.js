@@ -13,9 +13,9 @@ mongoose.connect(
 
 const data = new User({
   _id: new mongoose.Types.ObjectId(),
-  name: "Waqas",
-  email: "waqas@gmail.com",
-  address: "Multan",
+  name: "Zeeshan",
+  email: "zeeshan@gmail.com",
+  address: "Lahore",
 });
 
 data
