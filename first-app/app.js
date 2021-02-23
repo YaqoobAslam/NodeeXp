@@ -2,20 +2,25 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
-const User = require("./users");
-mongoose
-  .connect(
-    "mongodb+srv://YaqoobAslam:Ahmad786@786$yokihahalols@cluster0.lx1pt.mongodb.net/Test?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => {
-    console.warn("db connection done");
-  });
+const User = require("./models/users");
+mongoose.connect(
+  "mongodb+srv://YaqoobAslam:Ahmad786@786$yokihahalols@cluster0.lx1pt.mongodb.net/Test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
-User.find({}, function (err, users) {
-  if (err) console.warn(err);
-  console.warn(users);
+const data = new User({
+  _id: new mongoose.Types.ObjectId(),
+  name: "Waqas",
+  email: "waqas@gmail.com",
+  address: "Multan",
 });
+
+data
+  .save()
+  .then((result) => {
+    console.warn(result);
+  })
+  .catch((err) => console.warn(err));
