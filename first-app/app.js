@@ -31,11 +31,19 @@ app.post("/users", jsonParser, function(req, res){
     email: req.body.email,
     address: req.body.address
   })
-  
+
   data.save().then((result)=>{
-    res.status(201).json(result)
+    res.status(200).json(result)
   })
   .catch((errer)=>{
+    console.warn(errer);
+  })
+})
+
+app.delete("/user/:id", function(req,res){
+  User.deleteOne({_id:req.params.id}).then((result)=>{
+    res.status(200).json(result)
+  }).catch((errer)=>{
     console.warn(errer);
   })
 })
