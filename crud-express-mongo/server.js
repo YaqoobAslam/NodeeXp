@@ -3,14 +3,22 @@
 const express = require('express');
 const bodyParser= require('body-parser')
 const app = express();
+
+var quotesCollection;
+var db;
+
 const MongoClient = require('mongodb').MongoClient
 MongoClient.connect('mongodb+srv://YaqoobAslam:Ahmad786@786$yokihahalols@cluster0.uajpj.mongodb.net/star-wars-quotes?retryWrites=true&w=majority', {useUnifiedTopology:true})
+
 .then(client =>{
-  console.log('Connected to Database');
+    // console.log('Connected to Database')
+     db = client.db('star-wars-quotes')
+     quotesCollection = db.collection('quotes')
+
 })
 .catch(error => console.error(error))
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('/', (req, res)=>{
   // res.send('Hello world')
@@ -19,9 +27,25 @@ app.get('/', (req, res)=>{
 
 app.post('/quotes', (req,res)=>{
   // console.log('Helloooooooooo');
-  console.log(req.body);
+  // console.log(req.body);
+  
+  quotesCollection.insertOne(req.body)
+  .then(result =>{
+    // console.log(result)
+    res.redirect('/')
+  })
+  .catch(error => console.error(error))
 })
 
-app.listen(3000, function(){
-  console.log('listening on 3000');
+app.get('/', (req,res)=>{
+   db.collection('quotes').find().toArray()
+   .then(results =>{
+     console.log(results);
+   })
+   .catch(error => console.error(error))
+  
+})
+
+app.listen(5000, function(){
+  console.log('listening on 5000');
 })
