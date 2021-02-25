@@ -18,12 +18,14 @@ MongoClient.connect('mongodb+srv://YaqoobAslam:Ahmad786@786$yokihahalols@cluster
 })
 .catch(error => console.error(error))
 
+app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.get('/', (req, res)=>{
+
+// app.get('/', (req, res)=>{
   // res.send('Hello world')
-  res.sendFile(__dirname + '/index.html')
-})
+//   res.sendFile(__dirname + '/index.html')
+// })
 
 app.post('/quotes', (req,res)=>{
   // console.log('Helloooooooooo');
@@ -40,7 +42,11 @@ app.post('/quotes', (req,res)=>{
 app.get('/', (req,res)=>{
    db.collection('quotes').find().toArray()
    .then(results =>{
-     console.log(results);
+     //render the index.html template
+    //  console.log(results);
+    
+    //render the index.ejs template
+    res.render('index.ejs', {quotes: results})
    })
    .catch(error => console.error(error))
   
