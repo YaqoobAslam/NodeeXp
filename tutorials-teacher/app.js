@@ -1,10 +1,20 @@
-var myLogModule = require('./Log')
+var express = require('express');
+var app = express();
 
-myLogModule.info('Node.js started')
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
 
-var msg = require('./Message')
-console.log(msg);
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
 
-var msg = require('./Message')
-console.log(msg.SimpleMessage);
+app.post('/submit-student-data', function (req, res) {
+    var name = req.body.firstName + ' ' + req.body.lastName;
+    
+    res.send(name + '  Submitted Successfully!');
+});
+
+app.listen(4000, function () {
+    console.log('Node server is running..');
+});
 

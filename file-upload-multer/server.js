@@ -5,7 +5,7 @@ var multer = require('multer')
 const app = express()
 const port = 3000;
 app.get('/', (req, res) =>{
-  res.send('Hello People')
+  res.send('File Upload')
 })
 
 var storage = multer.diskStorage({
@@ -26,8 +26,6 @@ app.post('/single', upload.single('profile'), (req, res) => {
     res.send(400);
   }
 })
-
-
 
 app.listen(port, () =>{
   console.log('listening to the port' + port);

@@ -7,9 +7,11 @@
   <body>
     <h3>Node Express and MongoDB</h3>
     <form action="/quotes" method="POST">
-     <input type="text" placeholder="name" name="name"/><br><br>
-     <input type="text" placeholder="quote" name="quote"/><br><br>
-     <button type="submit">Submit</button>
+    Name <br>
+     <input type="text" placeholder="name" name="name" required /><br><br>
+     Add quote <br>
+     <input type="text" placeholder="quote" name="quote" required /><br><br>
+     <button type="submit">Submit</button>   
     </form>
     <!-- <%= quotes %> -->
 
@@ -23,8 +25,13 @@
       <%}
       %>
     </ul>
+
+    <div>
+      <h2>Valeria Alejandra!</h2>
+      <p> Replace  quote written by Zeeshan </p>
+      <button id="update-button">Replace quote</button>
+    </div>
+
+    <script src="/main.js"></script>
   </body>
 </html>
-
-
-

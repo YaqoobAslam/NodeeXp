@@ -1,8 +1,8 @@
 // console.log('May Node with you');
 
-const express = require('express');
+const express = require('express')
 const bodyParser= require('body-parser')
-const app = express();
+const app = express()
 
 var quotesCollection;
 var db;
@@ -14,16 +14,16 @@ MongoClient.connect('mongodb+srv://YaqoobAslam:Ahmad786@786$yokihahalols@cluster
     // console.log('Connected to Database')
      db = client.db('star-wars-quotes')
      quotesCollection = db.collection('quotes')
-
 })
 .catch(error => console.error(error))
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
-
+app.use(express.static('public'))
+app.use(bodyParser.json())
 
 // app.get('/', (req, res)=>{
-  // res.send('Hello world')
+// res.send('Hello world')
 //   res.sendFile(__dirname + '/index.html')
 // })
 
@@ -49,7 +49,19 @@ app.get('/', (req,res)=>{
     res.render('index.ejs', {quotes: results})
    })
    .catch(error => console.error(error))
-  
+})
+
+app.put('/quotes', (req, res)=>{
+  // console.log(req.body)
+  quotesCollection.findOneAndUpdate(
+    {name: 'Rashid'},
+    {
+      $set: {
+      name: req.body.name,
+      quote: req.body.quote
+      }
+    }
+  ) 
 })
 
 app.listen(5000, function(){
