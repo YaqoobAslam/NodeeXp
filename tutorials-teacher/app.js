@@ -1,19 +1,36 @@
-var express = require("express");
-var app = express();
+var MongoClient = require("mongodb").MongoClient;
 
-var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
+// Connect to the db
+MongoClient.connect("mongodb://localhost:27017/MyDb", function (err, db) {
+  db.collection("Persons", function (err, collection) {
+    collection.insert({ id: 1, firstName: "Steve", lastName: "Jobs" });
+    collection.insert({ id: 2, firstName: "Bill", lastName: "Gates" });
+    collection.insert({ id: 3, firstName: "James", lastName: "Bond" });
 
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+    db.collection("Persons").count(function (err, count) {
+      if (err) throw err;
+
+      console.log("Total Rows: " + count);
+    });
+  });
 });
 
-app.post("/submit-student-data", function (req, res) {
-  var name = req.body.firstName + " " + req.body.lastName;
-
-  res.send(name + "  Submitted Successfully!");
-});
-
-app.listen(4000, function () {
-  console.log("Node server is running..");
+var MongoClient = require("mongodb").MongoClient;
+// Connect to the db
+MongoClient.connect("mongodb://localhost:27017/MyDb", function (err, db) {
+  db.collection("Persons", function (err, collection) {
+    collection.update(
+      { id: 1 },
+      { $set: { firstName: "James", lastName: "Gosling" } },
+      { w: 1 },
+      function (err, result) {
+        if (err) throw err;
+        console.log("Document Updated Successfully");
+      }
+    );
+    collection.remove({ id: 2 }, { w: 1 }, function (err, result) {
+      if (err) throw err;
+      console.log("Document Removed Successfully");
+    });
+  });
 });
