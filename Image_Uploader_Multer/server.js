@@ -4,7 +4,7 @@ const app = express()
 const hbs = require('express-handlebars')
 const path = require('path')
 app.use(express.json())
-
+const port = process.env.PORT || 8000;
 // serving static files
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -25,4 +25,4 @@ app.engine('hbs', hbs({
 app.use('/', require('./server/router/router'))
 
 
-app.listen(3000, ()=> console.log(`Server is started on http://localhost:3000`))
+app.listen(port, ()=> console.log(`Server is started on ${port}`))
